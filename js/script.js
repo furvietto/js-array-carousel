@@ -67,79 +67,149 @@ for (let i = 0; i < items.length; i++) {
 const active = document.querySelectorAll(".img-l .image-container");
 const bright = document.querySelectorAll(".img-r img");
 
-console.log(bright);
+console.log(bright.classList);
 
 
 active[0].classList.add("active", "first");
-bright[0].classList.add("bright", "first");
+active[active.length - 1].classList.add("last")
+bright[0].classList.add("bright" , "first");
+bright[bright.length - 1].classList.add("last")
 
-active[active.length - 1].classList.add("last");
-bright[bright.length - 1].classList.add("last");
-
-
-console.log( active);
 
 const down = document.querySelector(".down");
 
+down.addEventListener("click", function () {
 
+    let falso = false;
+    const brightBottom = document.querySelector(".img-r img.bright");
+    const activeBottom = document.querySelector(".img-l .image-container.active")
 
-// passo all'elemento successivo
-down.addEventListener("click" , function () {
-    const BrightImages = document.querySelector(".img-r img.bright");
-    const ActiveImages = document.querySelector(".img-l .image-container.active");
-    let cond = false;
-
-    const classiActive = ActiveImages.classList;
-    
-    for (let i = 0; i < classiActive.length; i++) {
-       if (classiActive[i]=="last") {
-           cond = true;
-       }
+    for (let i = 0; i < bright.length; i++) {
         
+        if (brightBottom.classList[i] == "last") {
+            falso = true
+        }
     }
 
-    if (cond == false) {
-        
-    BrightImages.classList.remove("bright");
-    BrightImages.nextElementSibling.classList.add("bright");
+    if (falso == false) {
+        brightBottom.classList.remove("bright");
+    brightBottom.nextElementSibling.classList.add("bright");
+    
+    activeBottom.classList.remove("active");
+    activeBottom.nextElementSibling.classList.add("active");
 
-    ActiveImages.classList.remove("active");
-    ActiveImages.nextElementSibling.classList.add("active");
+    } else {
+        active[0].classList.add("active");
+        bright[0].classList.add("bright");
+        active[active.length - 1].classList.remove("active");
+        bright[bright.length - 1].classList.remove("bright");
     }
-    
-    
 
-
+    
 })
 
 
 const up = document.querySelector(".up");
 
+up.addEventListener("click", function () {
 
+    let falso = false;
+    const brightBottom = document.querySelector(".img-r img.bright");
+    const activeBottom = document.querySelector(".img-l .image-container.active");
 
-// passo all'elemento successivo
-up.addEventListener("click" , function () {
-    const BrightImages = document.querySelector(".img-r img.bright");
-    const ActiveImages = document.querySelector(".img-l .image-container.active");
-
-    let cond = false;
-
-    const classiBright = BrightImages.classList;
-    
-    for (let i = 0; i < classiBright.length; i++) {
-       if (classiBright[i]=="first") {
-           cond = true;
-       }
+    for (let i = 0; i < active.length; i++) {
         
+        if (activeBottom.classList[i] == "first") {
+            falso = true
+        }
     }
 
-    if (cond == false) {
-
-    BrightImages.classList.remove("bright");
-    BrightImages.previousElementSibling.classList.add("bright");
-
-    ActiveImages.classList.remove("active");
-    ActiveImages.previousElementSibling.classList.add("active");
+    if (falso == false) {
+        brightBottom.classList.remove("bright");
+        brightBottom.previousElementSibling.classList.add("bright");
+        
+        activeBottom.classList.remove("active");
+        activeBottom.previousElementSibling.classList.add("active");
+    } else {
+        active[0].classList.remove("active");
+        bright[0].classList.remove("bright");
+        active[active.length - 1].classList.add("active");
+        bright[bright.length - 1].classList.add("bright");
     }
+    
+
 })
+
+
+
+
+// const active = document.querySelectorAll(".img-l .image-container");
+// const bright = document.querySelectorAll(".img-r img");
+
+// console.log(bright);
+
+
+// active[0].classList.add("active", "first");
+// bright[0].classList.add("bright", "first");
+
+// active[active.length - 1].classList.add("last");
+// bright[bright.length - 1].classList.add("last");
+
+
+// console.log( active);
+
+// const down = document.querySelector(".down");
+
+// // passo all'elemento successivo
+// down.addEventListener("click" , function () {
+//     const BrightImages = document.querySelector(".img-r img.bright");
+//     const ActiveImages = document.querySelector(".img-l .image-container.active");
+//     let cond = false;
+
+//     const classiActive = ActiveImages.classList;
+    
+//     for (let i = 0; i < classiActive.length; i++) {
+//        if (classiActive[i]=="last") {
+//            cond = true;
+//        }
+        
+//     }
+
+//     if (cond == false) {
+        
+//     BrightImages.classList.remove("bright");
+//     BrightImages.nextElementSibling.classList.add("bright");
+
+//     ActiveImages.classList.remove("active");
+//     ActiveImages.nextElementSibling.classList.add("active");
+//     }
+// })
+
+// const up = document.querySelector(".up");
+
+// // passo all'elemento successivo
+// up.addEventListener("click" , function () {
+//     const BrightImages = document.querySelector(".img-r img.bright");
+//     const ActiveImages = document.querySelector(".img-l .image-container.active");
+
+//     let cond = false;
+
+//     const classiBright = BrightImages.classList;
+    
+//     for (let i = 0; i < classiBright.length; i++) {
+//        if (classiBright[i]=="first") {
+//            cond = true;
+//        }
+        
+//     }
+
+//     if (cond == false) {
+
+//     BrightImages.classList.remove("bright");
+//     BrightImages.previousElementSibling.classList.add("bright");
+
+//     ActiveImages.classList.remove("active");
+//     ActiveImages.previousElementSibling.classList.add("active");
+//     }
+// })
 
