@@ -54,7 +54,7 @@ const imagesLeft = document.querySelector(".img-l");
 for (let i = 0; i < items.length; i++) {
     imagesRight.innerHTML += `<img src=${items[i]} alt="">`
     imagesLeft.innerHTML += `
-    <div> 
+    <div class="image-container"> 
         <img src=${items[i]} alt="">
         <div>
             <h1>${title[i]}</h1>
@@ -64,16 +64,20 @@ for (let i = 0; i < items.length; i++) {
     `
 }
 
-const active = document.querySelectorAll(".img-l div");
+const active = document.querySelectorAll(".img-l .image-container");
 const bright = document.querySelectorAll(".img-r img");
 
+console.log(bright);
 
 
+active[0].classList.add("active", "first");
+bright[0].classList.add("bright", "first");
 
-active[0].classList.add("active");
-bright[0].classList.add("bright");
+active[active.length - 1].classList.add("last");
+bright[bright.length - 1].classList.add("last");
 
-console.log( bright[0].classList);
+
+console.log( active);
 
 const down = document.querySelector(".down");
 
@@ -81,35 +85,61 @@ const down = document.querySelector(".down");
 
 // passo all'elemento successivo
 down.addEventListener("click" , function () {
-    const images = document.querySelector("img-r img");
-    let falso = false;
+    const BrightImages = document.querySelector(".img-r img.bright");
+    const ActiveImages = document.querySelector(".img-l .image-container.active");
+    let cond = false;
 
-     for (let i = 0; i < bright.length; i++) {
+    const classiActive = ActiveImages.classList;
+    
+    for (let i = 0; i < classiActive.length; i++) {
+       if (classiActive[i]=="last") {
+           cond = true;
+       }
         
-       
-
-        if ( bright[i].classList.value == "bright") {
-            falso = true;
-        } else {
-           
-        }
-
-        
-   
-
-     }
-
-     if (falso == true) {
-        images.nextElementSibling.classList.remove("bright")
-
-    } else {
-        images.nextElementSibling.classList.add("bright")
     }
 
-     
+    if (cond == false) {
+        
+    BrightImages.classList.remove("bright");
+    BrightImages.nextElementSibling.classList.add("bright");
+
+    ActiveImages.classList.remove("active");
+    ActiveImages.nextElementSibling.classList.add("active");
+    }
     
-    // const imgNext = imageActive.nextElementSibling;
-    // const dotNext = dotActive.nextElementSibling;
-    // imgNext.classList.add('active');
-    // dotNext.classList.add('active');
+    
+
+
 })
+
+
+const up = document.querySelector(".up");
+
+
+
+// passo all'elemento successivo
+up.addEventListener("click" , function () {
+    const BrightImages = document.querySelector(".img-r img.bright");
+    const ActiveImages = document.querySelector(".img-l .image-container.active");
+
+    let cond = false;
+
+    const classiBright = BrightImages.classList;
+    
+    for (let i = 0; i < classiBright.length; i++) {
+       if (classiBright[i]=="first") {
+           cond = true;
+       }
+        
+    }
+
+    if (cond == false) {
+
+    BrightImages.classList.remove("bright");
+    BrightImages.previousElementSibling.classList.add("bright");
+
+    ActiveImages.classList.remove("active");
+    ActiveImages.previousElementSibling.classList.add("active");
+    }
+})
+

@@ -24,6 +24,7 @@
     height: 100%;
     position: relative;
     color: white;
+    min-width: 700px;
 }
 
 .img-l img {
@@ -93,4 +94,11 @@
     bottom: 30px;
     right: 20px;
     text-align: right;
+}
+
+@media screen and (max-width: 1050px) {
+    .up,
+    .down {
+        display: none;
+    }
 }
