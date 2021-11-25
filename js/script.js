@@ -69,31 +69,45 @@ const bright = document.querySelectorAll(".img-r img");
 
 
 
+
 active[0].classList.add("active");
 bright[0].classList.add("bright");
 
+console.log( bright[0].classList);
 
-
-const imageBright = document.querySelector("img.bright");
 const down = document.querySelector(".down");
 
-console.log(imageBright.classList);
 
 
 // passo all'elemento successivo
 down.addEventListener("click" , function () {
-    
-    
+    const images = document.querySelector("img-r img");
+    let falso = false;
 
      for (let i = 0; i < bright.length; i++) {
-    
+        
        
 
-        if (bright[i] == imageBright.classList) {
-            
+        if ( bright[i].classList.value == "bright") {
+            falso = true;
+        } else {
+           
         }
 
+        
+   
+
      }
+
+     if (falso == true) {
+        images.nextElementSibling.classList.remove("bright")
+
+    } else {
+        images.nextElementSibling.classList.add("bright")
+    }
+
+     
+    
     // const imgNext = imageActive.nextElementSibling;
     // const dotNext = dotActive.nextElementSibling;
     // imgNext.classList.add('active');
